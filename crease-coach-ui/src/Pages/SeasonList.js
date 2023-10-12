@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, List, ListItemButton, ListItemText } from "@mui/material";
+import { Box, List, ListItemButton, ListItemText, Typography } from "@mui/material";
 
 function SeasonList({seasons, seasonSelect}) {
 
@@ -12,6 +12,7 @@ function SeasonList({seasons, seasonSelect}) {
 
   return (
     <Box sx={{width: '100%', maxWidth: 360}}>
+      <Typography variant='h5' style={{padding: 8}}>Seasons</Typography>
       <List component="nav">
         {
           seasons.map((s) => (

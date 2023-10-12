@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import PlayerCard from './PlayerCard';
 import SeasonList from './SeasonList';
 import Games from './Games';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
 function GoalieDetail() {
   const navigate = useNavigate();
@@ -27,9 +28,8 @@ function GoalieDetail() {
   }, [params]);
   return (
     <div className="table-container">
-      <Button
-        onClick={() => navigate(-1) }
-      >
+      <Button onClick={() => navigate(-1) }>
+        <KeyboardBackspaceIcon></KeyboardBackspaceIcon>
         Back
       </Button>
       <PlayerCard className="centered"

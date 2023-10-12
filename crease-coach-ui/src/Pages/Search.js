@@ -41,6 +41,10 @@ function Search() {
         columns={tableColumns}
         rows={data}
         onRowClick={viewDetails}
+        initialState={{
+          pagination: { paginationModel: { pageSize: 5}}
+        }}
+        pageSizeOptions={[5,15,25]}
       />
     </div>
   );

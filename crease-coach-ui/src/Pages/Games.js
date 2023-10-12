@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from "@mui/x-data-grid";
-import { Box, Modal } from '@mui/material';
+import { Box, Modal, Typography } from '@mui/material';
 import GameDetails from './GameDetails';
 
 const columns = [
@@ -43,6 +43,7 @@ function Games({games}) {
 
   return (
     <div className="table-container">
+      <Typography style={{padding: 8}} variant='h5'>Games in season</Typography>
       <DataGrid
         columns={columns}
         rows={games}

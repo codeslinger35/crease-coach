@@ -17,15 +17,16 @@ export default function GameDetails({game}) {
   return (
     <div>
       <Grid container spacing="1" rowSpacing='2'>
-        <Grid item xs="4">
+        <Grid item xs="3">
           <Typography className='centered-text' variant='body'>Opponent: {game.opponent}</Typography>
         </Grid>
-        <Grid item xs="4">
+        <Grid item xs="3">
           <Typography className='centered-text' variant='body'>Date: {game.date}</Typography>
         </Grid>
-        <Grid item xs="4">
+        <Grid item xs="3">
           <Typography className='centered-text' variant='body'>Shots againt: {game.periods.reduce(((prev, curr) => prev += curr.shotsAgainst ), 0)}</Typography>
-          <br></br>
+        </Grid>
+        <Grid item xs="3">
           <Typography className='centered-text' variant='body'>Save %: {savePct(game)}</Typography>
         </Grid>
 
@@ -35,7 +36,7 @@ export default function GameDetails({game}) {
 
         {game.periods.map((p) => (
           <Grid item xs={12/game.periods.length}>
-            <Typography variant='body'>Period #: {p.periodNumber}</Typography>
+            <Typography variant='body'>Period #{p.periodNumber}</Typography>
             <br></br>
             <Typography variant='body'>Notes: {p.notes}</Typography>
           </Grid>
