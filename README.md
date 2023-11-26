@@ -1,5 +1,5 @@
 # Crease Coach
-This repo will store all related code for the Crease Coach helper tool. This tool is meant to help ice hockey goalie coaches keep track of the goalies they work with. This tool is a work in progress and is not ready for any real production environment, but I am test driving the tool with my teams this season (23-24).
+This repo will store all related code for the Crease Coach helper tool. This tool is meant to help ice hockey goalie coaches keep track of the film notes for the goalies they work with. This tool is a work in progress and is not ready for any real production environment, but I am test driving the tool with my teams this season (23-24).
 
 ## Overview
 This tool tracks seasons, games, periods per game, and coaching notes per period for each goalie in the system. Currently this is a simple JSON file stored at the project root, but I hope to expand this application to be a full-stack solution.
@@ -17,8 +17,8 @@ the application expects a file called `goalies.json` in the src/public folder. A
     "seasons": [
       {
         "id": 1,
-        "title": "U19 Jr Canes",
-        "description": "The 2023-24 season with the Jr Canes",
+        "title": "U19 Jr Team",
+        "description": "The 2023-24 season with the Jr Team",
         "team": "My Jr. Team",
         "year": "2023-24",
         "games": [
