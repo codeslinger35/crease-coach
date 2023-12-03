@@ -17,5 +17,6 @@ func (app *application) routes() *mux.Router {
 	r.HandleFunc("/goalies", app.goalieHandler)
 	r.HandleFunc("/goalies/{id}", app.goalieByIdHandler)
 
+	r.HandleFunc("/goalies/{goalieId}/seasons/{seasonId}/games", app.gameHandler)
 	return r
 }

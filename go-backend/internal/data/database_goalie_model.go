@@ -25,3 +25,7 @@ func (model DatabaseGoalieModel) AddGoalie(goalie Goalie) (Goalie, error) {
 func (model DatabaseGoalieModel) UpdateGoalie(goalie Goalie) (Goalie, error) {
 	return Goalie{}, nil
 }
+
+func (model DatabaseGoalieModel) AddGame(game Game, goalieId int64, seasonId int64) (Game, error) {
+	return Game{}, nil
+}

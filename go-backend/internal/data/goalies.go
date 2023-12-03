@@ -8,6 +8,8 @@ type GoalieModel interface {
 	GetGoalie(int64) (Goalie, error)
 	AddGoalie(Goalie) (Goalie, error)
 	UpdateGoalie(Goalie) (Goalie, error)
+
+	AddGame(Game, int64, int64) (Game, error)
 }
 
 type Goalie struct {
@@ -40,7 +42,8 @@ type Game struct {
 
 type Period struct {
 	Id             int64           `json:"id"`
-	Note           string          `json:"note"`
+	PeriodNumber   int64           `json:"periodNumber"`
+	Notes          string          `json:"notes"`
 	ShotsAgainst   int64           `json:"shotsAgainst"`
 	Saves          int64           `json:"saves"`
 	CoachingPoints []CoachingPoint `json:"coachingPoints"`
