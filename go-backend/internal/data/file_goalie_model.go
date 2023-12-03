@@ -74,6 +74,13 @@ func (model FileGoalieModel) UpdateGoalie(goalie Goalie) (Goalie, error) {
 	return (*model.DB)[i], nil
 }
 
+func (model FileGoalieModel) GetGames(goalieId int64, seasonId int64) ([]Game, error) {
+	goalieIndex := model.getIndexForGoalieId(goalieId)
+	seasonIndex := model.getIndexForSeasonId(seasonId, goalieIndex)
+
+	return (*model.DB)[goalieIndex].Seasons[seasonIndex].Games, nil
+}
+
 func (model FileGoalieModel) AddGame(game Game, goalieId int64, seasonId int64) (Game, error) {
 	goalieIndex := model.getIndexForGoalieId(goalieId)
 	seasonIndex := model.getIndexForSeasonId(seasonId, goalieIndex)
@@ -84,6 +91,16 @@ func (model FileGoalieModel) AddGame(game Game, goalieId int64, seasonId int64) 
 	if err != nil {
 		return Game{}, err
 	}
+
+	return (*model.DB)[goalieIndex].Seasons[seasonIndex].Games[model.getIndexForGameId(game.Id, goalieIndex, seasonIndex)], nil
+}
+
+func (model FileGoalieModel) UpdateGame(game Game, goalieId int64, seasonId int64, gameId int64) (Game, error) {
+	goalieIndex := model.getIndexForGoalieId(goalieId)
+	seasonIndex := model.getIndexForSeasonId(seasonId, goalieIndex)
+	gameIndex := model.getIndexForGameId(game.Id, goalieIndex, seasonIndex)
+
+	(*model.DB)[goalieIndex].Seasons[seasonIndex].Games[gameIndex] = game
 
 	return (*model.DB)[goalieIndex].Seasons[seasonIndex].Games[model.getIndexForGameId(game.Id, goalieIndex, seasonIndex)], nil
 }

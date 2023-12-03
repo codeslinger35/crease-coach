@@ -1,15 +1,26 @@
 package data
 
+// GoalieModel is an interface for a Goalie datastore
 type GoalieModel interface {
 	Init() error
 	Save() error
 
+	// GetAll will return all data for all goalies in the database
 	GetAll() ([]Goalie, error)
+
+	// GetGoalie will return all data for a goalie with the id goalieId
 	GetGoalie(int64) (Goalie, error)
+	// AddGoalie will add a new goalie to the database
 	AddGoalie(Goalie) (Goalie, error)
+	// UpdateGoalie will update an existing goalie
 	UpdateGoalie(Goalie) (Goalie, error)
 
+	// GetGames will return all games for a goalie with id goalieId and season with id seasonId
+	GetGames(int64, int64) ([]Game, error)
+	// AddGame will add new game data for goalie goalieId in season seasonId
 	AddGame(Game, int64, int64) (Game, error)
+	// UpdateGame will update all game data for a goalie goalieId in season seasonId
+	UpdateGame(Game, int64, int64, int64) (Game, error)
 }
 
 type Goalie struct {

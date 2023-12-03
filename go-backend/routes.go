@@ -14,9 +14,12 @@ func (app *application) routes() *mux.Router {
 	r.HandleFunc("/init", app.init)
 	r.HandleFunc("/save", app.save)
 
+	// Goalies
 	r.HandleFunc("/goalies", app.goalieHandler)
 	r.HandleFunc("/goalies/{id}", app.goalieByIdHandler)
 
+	// Games
 	r.HandleFunc("/goalies/{goalieId}/seasons/{seasonId}/games", app.gameHandler)
+	r.HandleFunc("/goalies/{goalieId}/seasons/{seasonId}/games/{gameId}", app.gameByIdHandler)
 	return r
 }

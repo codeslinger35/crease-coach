@@ -143,6 +143,16 @@ func (app *application) gameHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if r.Method == http.MethodGet {
+		games, err := app.models.Goalies.GetGames(goalieId, seasonId)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		app.writeJSON(w, http.StatusOK, games, nil)
+	}
+
 	if r.Method == http.MethodPost {
 		var newGame data.Game
 		err := app.readJSON(w, r, &newGame)
@@ -157,5 +167,43 @@ func (app *application) gameHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		app.writeJSON(w, http.StatusCreated, outGame, nil)
+	}
+}
+
+func (app *application) gameByIdHandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	goalieId, err := strconv.ParseInt(vars["goalieId"], 10, 64)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	seasonId, err := strconv.ParseInt(vars["seasonId"], 10, 64)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	gameId, err := strconv.ParseInt(vars["seasonId"], 10, 64)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	if r.Method == http.MethodPut {
+		var updatedGame data.Game
+		err := app.readJSON(w, r, &updatedGame)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		game, err := app.models.Goalies.UpdateGame(updatedGame, goalieId, seasonId, gameId)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		app.writeJSON(w, http.StatusCreated, game, nil)
 	}
 }

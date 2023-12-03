@@ -36,7 +36,7 @@ func main() {
 	flag.Parse()
 
 	// cfg.dsn = "postgres://postgres:mysecretpassword@localhost/readinglist?sslmode=disable"
-	// // postgres://postgres:mysecretpassword@localhost/readinglist?sslmode=disable
+	// postgres://postgres:mysecretpassword@localhost/readinglist?sslmode=disable
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
 	// db, err := sql.Open("postgres", cfg.dsn)
