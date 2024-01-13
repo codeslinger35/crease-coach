@@ -3,5 +3,7 @@
 .venv
 
 goalies.json
+*.template.json
 
 ccapi
+.env

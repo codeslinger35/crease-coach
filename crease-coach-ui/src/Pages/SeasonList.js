@@ -5,8 +5,8 @@ function SeasonList({seasons, seasonSelect}) {
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleListItemClick = (event, season) => {
-    setSelectedIndex(season.id);
+  const handleListItemClick = (event, season, index) => {
+    setSelectedIndex(index);
     seasonSelect(season);
   };
 
@@ -15,11 +15,11 @@ function SeasonList({seasons, seasonSelect}) {
       <Typography variant='h5' style={{padding: 8}}>Seasons</Typography>
       <List component="nav">
         {
-          seasons.map((s) => (
+          seasons.map((s, index) => (
             <ListItemButton
               key={s.id}
-              selected={selectedIndex === s.id}
-              onClick={(event) => handleListItemClick(event, s)}
+              selected={selectedIndex === index}
+              onClick={(event) => handleListItemClick(event, s, index)}
             >
               <ListItemText primary={s.title}/>
           </ListItemButton>
