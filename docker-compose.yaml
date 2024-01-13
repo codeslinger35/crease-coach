@@ -1,0 +1,13 @@
+services:
+  go-backend:
+    build:
+      context: go-backend
+      dockerfile: ./Dockerfile
+      args:
+        PORT: 4000
+    ports:
+      - "4000:4000"
+    volumes:
+      - type: bind
+        source: ./go-backend/goalies.json
+        target: /app/goalies.json
